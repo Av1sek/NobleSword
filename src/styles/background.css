@@ -1,11 +1,46 @@
 body {
-    background-color: rgb(98, 78, 76);
+    background-color: rgb(112, 118, 104);
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-top: 100px;
+    padding-top: 130px;
+    overflow: hidden;
 }
 
 #external-links {
     display: inline-flex;
+    border-radius: 10px;
+    background-color: white;
+    padding: 5px 5px 5px 5px;
+}
+
+#Logo {
+    position: absolute;
+    top: 20px;
+}
+
+#BodyBG {
+    position: absolute;
+    padding-top: 0px;
+    z-index: -2;
+    top: 0px;
+    min-width: 100%;
+    max-height: 100%;
+}
+
+#KnightBG {
+    z-index: -1;
+    position: absolute;
+    top: 0px;
+    max-height: 100%;
+    left: -100px;
+}
+
+#KnightBG2 {
+    z-index: -1;
+    position: absolute;
+    top: 0px;
+    max-height: 100%;
+    right: -100px;
+    transform: scaleX(-1);
 }

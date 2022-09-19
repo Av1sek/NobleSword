@@ -1,12 +1,9 @@
-import Platform from './platform'
+import Platform from './platform.js'
+import Player from './player.js'
 
 export default class Game {
     constructor(ctx) {
-        
-        let img = new Image();
-        img.src = "assets/bg.png";
-        console.log(img);
-        console.log(ctx.drawImage(img, 0, 0, 960,540));
-        new Platform(ctx)
+        new Platform(ctx);
+        new Player(ctx, {x: 100, y: 200})
     }
 }

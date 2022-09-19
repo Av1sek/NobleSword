@@ -1,0 +1,30 @@
+#Back {
+    background-color: blue;
+    color: red;
+    position: absolute;
+    align-self: flex-end;
+    margin-right: 270px;
+    top: 160px;
+    font-size: 40px;
+    width: 200px;
+    text-align: center;
+}
+
+#HelpBody {
+    background-color: blue;
+    color: red;
+    position: absolute;
+    top: 400px;
+    font-size: 40px;
+    text-align: left;
+}
+
+#CreditsBody {
+    background-color: blue;
+    color: red;
+    position: absolute;
+    top: 400px;
+    font-size: 40px;
+    text-align: left;
+}
+

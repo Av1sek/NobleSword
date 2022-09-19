@@ -1,0 +1,21 @@
+#SP, #MP, #Help, #Credits{
+    background-color: blue;
+    color: red;
+    position: absolute;
+    bottom: 340px;
+    font-size: 40px;
+    width: 200px;
+    text-align: center;
+}
+
+#MP {
+    bottom: 280px;
+}
+
+#Help {
+    bottom: 220px;
+}
+
+#Credits {
+    bottom: 160px;
+}
