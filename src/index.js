@@ -1,4 +1,3 @@
-import Game from './scripts/game.js'
 import View from './scripts/view.js'
 
 document.addEventListener('DOMContentLoaded', () => {

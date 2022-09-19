@@ -1,4 +1,4 @@
-import Game from './game.js'
+import Multiplayer from './multiplayer.js'
 import Help from './help.js'
 import Credits from './credits.js';
 
@@ -38,12 +38,12 @@ document.addEventListener("click", (el) => {
 
 function loadSinglePlayer(ctx) {
     deleteButtons();
-    new Game(ctx);
+    new Multiplayer(ctx);
 }
 
 function loadMultiPlayer(ctx) {
     deleteButtons();
-    new Game(ctx);
+    new Multiplayer(ctx);
 }
 
 function loadHelp(ctx) {

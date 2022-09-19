@@ -1,5 +1,3 @@
-import View from './view'
-
 export default class Credits {
     constructor() {
         let canvas = document.getElementById("game-window");
