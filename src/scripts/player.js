@@ -6,15 +6,19 @@ export default class Player {
         this.position = position;
         this.id = values.id;
         this.velocity = values.velocity;
+        this.attacking = false;
+        this.onCooldown = false;
 
+        this.direction = values.direction
         this.rightkey = values.rightkey;
         this.leftkey = values.leftkey;
+        this.attack1 = values.attack1;
+
 
         this.hitbox = {
             position: position,
             width: 200,
             height: 100,
-            direction: 0
         }
 
         this.keysPressed = {
@@ -27,21 +31,39 @@ export default class Player {
         this.handleClick();
     }
 
+    attack(attacktime, cooldowntime){
+        this.attacking = true;
+        this.game.collision(this.hitbox, this);
+        this.cooldown(cooldowntime)
+        setTimeout(() => {
+            this.attacking = false
+        }, attacktime);
+    }
+
+    cooldown(timer) {
+        this.onCooldown = true;
+        setTimeout(() => {
+            this.onCooldown = false;
+        }, timer);
+    }
+
     draw() {
         this.ctx.fillStyle = "white";
         this.ctx.fillRect(this.position.x,this.position.y,100,250);
-        this.ctx.fillStyle = "red";
-        this.ctx.fillRect(this.hitbox.position.x + this.hitbox.direction, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
     }
 
     update() {
         this.draw();
         this.velocity = 0;
-
-        if (this.keysPressed.right && this.lastKey === this.rightkey) {
-            if (this.position.x + 10 < this.canvas.width - 90) {this.position.x += 10}
-        } else if (this.keysPressed.left && this.lastKey === this.leftkey) {
-            if (this.position.x - 10 >= 0) {this.position.x -= 10}
+        if (this.attacking) {
+            this.ctx.fillStyle = "red";
+            this.ctx.fillRect(this.hitbox.position.x + this.direction, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
+        } else {
+            if (this.keysPressed.right && this.lastKey === this.rightkey) {
+                if (this.position.x + 10 < this.canvas.width - 90) {this.position.x += 10}
+            } else if (this.keysPressed.left && this.lastKey === this.leftkey) {
+                if (this.position.x - 10 >= 0) {this.position.x -= 10}
+            }
         }
     }
 
@@ -50,13 +72,14 @@ export default class Player {
             switch (e.key) {
                 case this.rightkey:
                     this.keysPressed.right = true;
-                    this.lastKey = this.rightkey;
-                    this.hitbox.direction = 0;
+                    this.lastKey = this.rightkey;    
                     break;
-                case this.leftkey:
+                case this.leftkey:    
                     this.keysPressed.left = true;
                     this.lastKey = this.leftkey;
-                    this.hitbox.direction = -100;
+                    break;
+                case this.attack1:
+                    if (!this.onCooldown) {this.attack(250,500)}
                     break;
             }
         })
@@ -71,22 +94,4 @@ export default class Player {
             }
         })
     }
-
-    // handleClick() {
-    //     document.addEventListener('keydown', (e) => {
-    //         if (e.key === this.rightkey) {
-    //             if (this.velocity + 1 < this.canvas.width - 80) {
-    //                 this.velocity += 1;
-    //                 this.game.render();
-    //             }
-    //         }
-    //         if (e.key === this.leftkey) {
-    //             if (this.velocity - 1 >= 0) {
-    //                 console.log(this.position.x, this.canvas.width);
-    //                 this.velocity -= 1;
-    //                 this.game.render();
-    //             }
-    //         }
-    //     })
-    // }
 }
