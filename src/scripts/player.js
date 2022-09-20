@@ -81,7 +81,7 @@ export default class Player {
                     this.lastKey = this.leftkey;
                     break;
                 case this.attack1:
-                    if (!this.onCooldown) {this.attack(250,500, this.atk1DMG)}
+                    if (!this.onCooldown) {this.attack(250,300, this.atk1DMG)}
                     break;
             }
         })

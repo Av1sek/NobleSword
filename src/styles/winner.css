@@ -1,0 +1,11 @@
+#WinnerText {
+    background-color: red;
+    height: 100px;
+    width: 960px;
+    align-self: center;
+    color: white;
+    margin: auto;
+
+    text-align: center;
+    font-size: 80px;
+}

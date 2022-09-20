@@ -169,6 +169,20 @@ body {
     font-size: 60px;
     position: absolute;
 }
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/winner.css ***!
+  \*****************************************************************************************************/
+#WinnerText {
+    background-color: red;
+    height: 100px;
+    width: 960px;
+    align-self: center;
+    color: white;
+    margin: auto;
+
+    text-align: center;
+    font-size: 80px;
+}
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
