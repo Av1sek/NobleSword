@@ -10,6 +10,19 @@ body {
     overflow: hidden;
 }
 
+#canvas-div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+
+
+    width: 960px;
+    height: 540px;
+    align-self: center;
+    position: absolute;
+}
+
 #external-links {
     display: inline-flex;
     border-radius: 10px;
@@ -106,6 +119,56 @@ body {
 }
 
 
+/*!********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/healthbar.css ***!
+  \********************************************************************************************************/
+#P1HealthMax {
+    background-color: red;
+    width: 400px;
+    height: 40px;
+    position: absolute;
+    align-self: flex-start;
+}
+
+#P2HealthMax {
+    background-color: red;
+    width: 400px;
+    height: 40px;
+    position: absolute;
+    align-self: flex-end;
+}
+
+#P1Health {
+    background-color: green;
+    width: 400px;
+    height: 40px;
+    position: absolute;
+    align-self: flex-start;
+    z-index: 2;
+}
+
+#P2Health {
+    background-color: green;
+    width: 400px;
+    height: 40px;
+    position: absolute;
+    align-self: flex-end;
+    z-index: 2;
+}
+
+#Timer {
+    background-color: rgb(145, 55, 55);
+    height: 90px;
+    width: 90px;
+    display: inline-block;
+    align-self: center;
+    
+    
+    line-height: 90px;
+    text-align: center;
+    font-size: 60px;
+    position: absolute;
+}
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/

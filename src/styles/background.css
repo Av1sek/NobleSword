@@ -7,6 +7,19 @@ body {
     overflow: hidden;
 }
 
+#canvas-div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+
+
+    width: 960px;
+    height: 540px;
+    align-self: center;
+    position: absolute;
+}
+
 #external-links {
     display: inline-flex;
     border-radius: 10px;

@@ -1,0 +1,47 @@
+#P1HealthMax {
+    background-color: red;
+    width: 400px;
+    height: 40px;
+    position: absolute;
+    align-self: flex-start;
+}
+
+#P2HealthMax {
+    background-color: red;
+    width: 400px;
+    height: 40px;
+    position: absolute;
+    align-self: flex-end;
+}
+
+#P1Health {
+    background-color: green;
+    width: 400px;
+    height: 40px;
+    position: absolute;
+    align-self: flex-start;
+    z-index: 2;
+}
+
+#P2Health {
+    background-color: green;
+    width: 400px;
+    height: 40px;
+    position: absolute;
+    align-self: flex-end;
+    z-index: 2;
+}
+
+#Timer {
+    background-color: rgb(145, 55, 55);
+    height: 90px;
+    width: 90px;
+    display: inline-block;
+    align-self: center;
+    
+    
+    line-height: 90px;
+    text-align: center;
+    font-size: 60px;
+    position: absolute;
+}

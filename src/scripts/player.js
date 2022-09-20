@@ -12,7 +12,9 @@ export default class Player {
         this.direction = values.direction
         this.rightkey = values.rightkey;
         this.leftkey = values.leftkey;
+
         this.attack1 = values.attack1;
+        this.atk1DMG = values.atk1DMG;
 
 
         this.hitbox = {
@@ -31,9 +33,9 @@ export default class Player {
         this.handleClick();
     }
 
-    attack(attacktime, cooldowntime){
+    attack(attacktime, cooldowntime, dmg){
         this.attacking = true;
-        this.game.collision(this.hitbox, this);
+        this.game.collision(this.hitbox, this, dmg);
         this.cooldown(cooldowntime)
         setTimeout(() => {
             this.attacking = false
@@ -79,7 +81,7 @@ export default class Player {
                     this.lastKey = this.leftkey;
                     break;
                 case this.attack1:
-                    if (!this.onCooldown) {this.attack(250,500)}
+                    if (!this.onCooldown) {this.attack(250,500, this.atk1DMG)}
                     break;
             }
         })
