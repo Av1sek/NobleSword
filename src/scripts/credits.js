@@ -1,6 +1,7 @@
 export default class Credits {
     constructor() {
         let canvas = document.getElementById("game-window");
+        this.canvasDiv = document.getElementById('canvas-div');
         let ctx = canvas.getContext('2d');
         ctx.clearRect(0,0, canvas.width, canvas.height);
 
@@ -11,7 +12,7 @@ export default class Credits {
 
         let body = document.createElement('Text');
         body.setAttribute("id", "CreditsBody");
-        document.body.appendChild(body);
+        this.canvasDiv.appendChild(body);
         body.innerHTML = "Avisek AND THE WORLD"
 
     }
@@ -19,7 +20,7 @@ export default class Credits {
     createButton(values) {
         let txt = document.createElement("Text");
         txt.setAttribute("id", values.id);
-        document.body.appendChild(txt);
+        this.canvasDiv.appendChild(txt);
         txt.innerHTML = values.html;
     }
 }

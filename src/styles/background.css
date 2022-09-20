@@ -29,7 +29,7 @@ body {
 
 #Logo {
     position: absolute;
-    top: 20px;
+    top: 0px;
 }
 
 #BodyBG {
@@ -56,4 +56,11 @@ body {
     max-height: 100%;
     right: -100px;
     transform: scaleX(-1);
+}
+
+#frame {
+    position: absolute;
+    width: 1020px;
+    height: 580px;
+    top: 120px;
 }

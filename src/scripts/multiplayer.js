@@ -6,6 +6,7 @@ import Winner from './winner.js'
 export default class Multiplayer {
     constructor(ctx) {
         new Platform(ctx);
+        this.ctx = ctx;
         this.canvasDiv = document.getElementById('canvas-div');
         this.Player1 = new Player(ctx,this, {x: 0, y: 240}, {id: "Player1", velocity: 0, direction: 0, leftkey: "a", rightkey: "d", attack1: "j", atk1DMG: 25})
         this.Player2 = new Player(ctx,this, {x: 860, y: 240}, {id: "Player2", velocity: 0, direction: -100, leftkey: "ArrowLeft", rightkey: "ArrowRight", attack1: ".", atk1DMG: 25})
@@ -156,12 +157,12 @@ export default class Multiplayer {
             } else {
 
                 let canvas = document.getElementById('game-window');
-                let ctx = canvas.getContext('2d')
+                // let ctx = canvas.getContext('2d')
 
                 this.updateHealth()
 
-                ctx.clearRect(0,0,canvas.width, canvas.height);
-                new Platform(ctx);
+                this.ctx.clearRect(0,0,960, 540);
+                new Platform(this.ctx);
 
                 if (this.Player1.position.x > this.Player2.position.x) {
                     this.Player1.direction = -100;

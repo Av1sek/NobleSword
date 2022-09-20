@@ -16,6 +16,11 @@ export default class Player {
         this.attack1 = values.attack1;
         this.atk1DMG = values.atk1DMG;
 
+        this.img = new Image();
+        this.img.src = "assets/knight/idle/Heroknight_Idle_0.png";
+        this.num = 0;
+        this.frameCounter = 0;
+        this.stagger = 8;
 
         this.hitbox = {
             position: position,
@@ -49,9 +54,21 @@ export default class Player {
         }, timer);
     }
 
+    update_idle() {
+        this.frameCounter++;
+    
+        if (this.frameCounter % 5 === 0) {
+            this.num++;
+            if (this.num > 9) {this.num = 0}
+            this.img.src = `assets/knight/Run/Heroknight_Run_${this.num}.png`
+        }
+    }
+
     draw() {
-        this.ctx.fillStyle = "white";
-        this.ctx.fillRect(this.position.x,this.position.y,100,250);
+        // this.ctx.fillStyle = "white";
+        // this.ctx.fillRect(this.position.x,this.position.y,100,250);
+        this.update_idle();
+        this.ctx.drawImage(this.img, this.position.x - 100, this.position.y, 300, 300)
     }
 
     update() {

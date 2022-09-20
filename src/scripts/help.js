@@ -3,6 +3,7 @@ import View from './view'
 export default class Help {
     constructor() {
         let canvas = document.getElementById("game-window");
+        this.canvasDiv = document.getElementById('canvas-div')
         let ctx = canvas.getContext('2d');
         ctx.clearRect(0,0, canvas.width, canvas.height);
 
@@ -13,7 +14,7 @@ export default class Help {
 
         let body = document.createElement('Text');
         body.setAttribute("id", "HelpBody");
-        document.body.appendChild(body);
+        this.canvasDiv.appendChild(body);
         body.innerHTML = "NO HELP YET"
 
     }
@@ -21,7 +22,7 @@ export default class Help {
     createButton(values) {
         let txt = document.createElement("Text");
         txt.setAttribute("id", values.id);
-        document.body.appendChild(txt);
+        this.canvasDiv.appendChild(txt);
         txt.innerHTML = values.html;
     }
 }

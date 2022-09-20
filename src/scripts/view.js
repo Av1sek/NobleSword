@@ -5,6 +5,7 @@ import Credits from './credits.js';
 export default class View {
     constructor(canvas, ctx) {
         this.ctx = ctx;
+        this.canvasDiv = document.getElementById('canvas-div');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         ctx.beginPath();
@@ -25,7 +26,7 @@ export default class View {
     createButton(values) {
         let txt = document.createElement("Text");
         txt.setAttribute("id", values.id);
-        document.body.appendChild(txt);
+        this.canvasDiv.appendChild(txt);
         txt.innerHTML = values.html;
     }
 }

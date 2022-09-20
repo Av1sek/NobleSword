@@ -32,7 +32,7 @@ body {
 
 #Logo {
     position: absolute;
-    top: 20px;
+    top: 0px;
 }
 
 #BodyBG {
@@ -61,6 +61,12 @@ body {
     transform: scaleX(-1);
 }
 
+#frame {
+    position: absolute;
+    width: 1020px;
+    height: 580px;
+    top: 120px;
+}
 /*!***************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/view.css ***!
   \***************************************************************************************************/
@@ -68,13 +74,13 @@ body {
     background-color: red;
     color: white;
     position: absolute;
-    bottom: 340px;
+    bottom: 100px;
     font-size: 40px;
     width: 250px;
     text-align: center;
-    border-radius: 24px;
+    border-radius: 15px;
     align-self: flex-start;
-    margin-left: 300px;
+    margin-left: 100px;
 }
 
 #MP {
@@ -96,29 +102,28 @@ body {
     color: white;
     position: absolute;
     align-self: flex-end;
-    margin-right: 270px;
-    top: 160px;
+    margin-top: 50px;
+    margin-right: 80px;
     font-size: 40px;
     width: 200px;
     text-align: center;
+    border-radius: 10px;
 }
 
 #HelpBody {
     background-color: red;
     color: white;
-    position: absolute;
-    top: 400px;
+    align-self: center;
     font-size: 40px;
-    text-align: left;
+    margin-top: 250px;
 }
 
 #CreditsBody {
     background-color: red;
     color: white;
-    position: absolute;
-    top: 400px;
+    align-self: center;
     font-size: 40px;
-    text-align: left;
+    margin-top: 250px;
 }
 
 
@@ -129,6 +134,8 @@ body {
     background-color: red;
     width: 400px;
     height: 40px;
+    top: 20px;
+    margin-left: 30px;
     position: absolute;
     align-self: flex-start;
 }
@@ -137,6 +144,8 @@ body {
     background-color: red;
     width: 400px;
     height: 40px;
+    top: 20px;
+    margin-right: 30px;
     position: absolute;
     align-self: flex-end;
 }
@@ -145,6 +154,8 @@ body {
     background-color: green;
     width: 400px;
     height: 40px;
+    top: 20px;
+    margin-left: 30px;
     position: absolute;
     align-self: flex-start;
     z-index: 2;
@@ -154,6 +165,8 @@ body {
     background-color: green;
     width: 400px;
     height: 40px;
+    top: 20px;
+    margin-right: 30px;
     position: absolute;
     align-self: flex-end;
     z-index: 2;
