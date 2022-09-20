@@ -60,7 +60,7 @@ export default class Player {
         if (this.attacking) {
             this.ctx.fillStyle = "red";
             this.ctx.fillRect(this.hitbox.position.x + this.direction, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
-        } else {
+        } else {    
             if (this.keysPressed.right && this.lastKey === this.rightkey) {
                 if (this.position.x + 10 < this.canvas.width - 90) {this.position.x += 10}
             } else if (this.keysPressed.left && this.lastKey === this.leftkey) {

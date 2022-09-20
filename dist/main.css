@@ -65,13 +65,16 @@ body {
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/view.css ***!
   \***************************************************************************************************/
 #SP, #MP, #Help, #Credits{
-    background-color: blue;
-    color: red;
+    background-color: red;
+    color: white;
     position: absolute;
     bottom: 340px;
     font-size: 40px;
-    width: 200px;
+    width: 250px;
     text-align: center;
+    border-radius: 24px;
+    align-self: flex-start;
+    margin-left: 300px;
 }
 
 #MP {
@@ -89,8 +92,8 @@ body {
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/help.css ***!
   \***************************************************************************************************/
 #Back {
-    background-color: blue;
-    color: red;
+    background-color: red;
+    color: white;
     position: absolute;
     align-self: flex-end;
     margin-right: 270px;
@@ -101,8 +104,8 @@ body {
 }
 
 #HelpBody {
-    background-color: blue;
-    color: red;
+    background-color: red;
+    color: white;
     position: absolute;
     top: 400px;
     font-size: 40px;
@@ -110,8 +113,8 @@ body {
 }
 
 #CreditsBody {
-    background-color: blue;
-    color: red;
+    background-color: red;
+    color: white;
     position: absolute;
     top: 400px;
     font-size: 40px;

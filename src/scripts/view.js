@@ -8,13 +8,18 @@ export default class View {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         ctx.beginPath();
-        ctx.fillStyle = "grey";
+        ctx.fillStyle = "black";
         ctx.fillRect(0,0,canvas.width,canvas.height);
 
         this.createButton({id: "SP", html: "Singleplayer"});
         this.createButton({id: "MP", html: "Multiplayer"})
         this.createButton({id: "Help", html: "Help"});
         this.createButton({id: "Credits", html: "Credits"});
+
+        // this.img = new Image();
+        // this.img.src = "assets/menuSwordsman.png";
+        // this.ctx.drawImage(this.img, 10, 10);
+        // console.log(this.img)
     }
 
     createButton(values) {

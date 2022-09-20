@@ -1,6 +1,6 @@
 #Back {
-    background-color: blue;
-    color: red;
+    background-color: red;
+    color: white;
     position: absolute;
     align-self: flex-end;
     margin-right: 270px;
@@ -11,8 +11,8 @@
 }
 
 #HelpBody {
-    background-color: blue;
-    color: red;
+    background-color: red;
+    color: white;
     position: absolute;
     top: 400px;
     font-size: 40px;
@@ -20,8 +20,8 @@
 }
 
 #CreditsBody {
-    background-color: blue;
-    color: red;
+    background-color: red;
+    color: white;
     position: absolute;
     top: 400px;
     font-size: 40px;

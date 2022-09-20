@@ -1,11 +1,14 @@
 #SP, #MP, #Help, #Credits{
-    background-color: blue;
-    color: red;
+    background-color: red;
+    color: white;
     position: absolute;
     bottom: 340px;
     font-size: 40px;
-    width: 200px;
+    width: 250px;
     text-align: center;
+    border-radius: 24px;
+    align-self: flex-start;
+    margin-left: 300px;
 }
 
 #MP {
