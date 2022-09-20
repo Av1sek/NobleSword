@@ -1,15 +1,19 @@
+import { setInterval } from 'core-js';
 import Platform from './platform.js'
 import Player from './player.js'
 
 export default class Multiplayer {
     constructor(ctx) {
         new Platform(ctx);
-        this.canvasDiv = document.getElementById('canvas-div')
+        this.canvasDiv = document.getElementById('canvas-div');
         this.Player1 = new Player(ctx,this, {x: 0, y: 190}, {id: "Player1", velocity: 0, direction: 0, leftkey: "a", rightkey: "d", attack1: "j", atk1DMG: 25})
         this.Player2 = new Player(ctx,this, {x: 860, y: 190}, {id: "Player2", velocity: 0, direction: -100, leftkey: "ArrowLeft", rightkey: "ArrowRight", attack1: ".", atk1DMG: 25})
-        this.animate()
-        this.createHealthBars()
-        this.createTimer()
+        this.gameEnded = false;
+
+        this.animate();
+        this.createHealthBars();
+        this.createTimer();
+        this.updateTimer();
     }
 
     createHealthBars() {
@@ -38,8 +42,8 @@ export default class Multiplayer {
         let P1Health = document.getElementById("P1Health");
         let P2Health = document.getElementById("P2Health");
 
-        P1Health.style.width = P1Health.dataset.Health.concat("px")
-        P2Health.style.width = P2Health.dataset.Health.concat("px")
+        P1Health.style.width = P1Health.dataset.Health.concat("px");
+        P2Health.style.width = P2Health.dataset.Health.concat("px");
     }
 
     createTimer() {
@@ -99,7 +103,18 @@ export default class Multiplayer {
         }
     }
 
-
+    updateTimer() {
+        let Timer = document.getElementById('Timer');
+        const clock = setInterval(() => {
+            let time = parseInt(Timer.innerHTML);
+            let newtime = time - 1;
+            if (newtime <= 0) {
+                clearInterval(clock);
+            }
+            Timer.innerHTML = newtime;
+        }, 1000)
+    }
+    
     animate() {
         setInterval(() => {
             let canvas = document.getElementById('game-window');
