@@ -6,8 +6,11 @@ export default class Player {
         this.position = position;
         this.id = values.id;
         this.velocity = values.velocity;
-        this.attacking = false;
+        this.action = ""
         this.onCooldown = false;
+
+        this.blocking = false;
+        this.block = values.block;
 
         this.direction = values.direction
         this.rightkey = values.rightkey;
@@ -16,10 +19,18 @@ export default class Player {
         this.attack1 = values.attack1;
         this.atk1DMG = values.atk1DMG;
 
+        this.attack2 = values.attack2;
+        this.atk2DMG = values.atk2DMG;
+
+        this.attack3 = values.attack3;
+        this.atk3DMG = values.atk3DMG;
+
         this.img = new Image();
         this.img.src = "assets/knight/idle/Heroknight_Idle_0.png";
         this.num = 0;
         this.frameCounter = 0;
+        this.state = "Idle";
+        this.numFrames = 7
         this.stagger = 8;
 
         this.hitbox = {
@@ -38,13 +49,50 @@ export default class Player {
         this.handleClick();
     }
 
-    attack(attacktime, cooldowntime, dmg){
-        this.attacking = true;
+    hurt(){
+        this.hit = true; 
+        this.cooldown(150);
+        this.update_hurt();
+
+        setTimeout(() => {
+            this.hit = false
+            if (this.state === "Run") {this.update_run()}
+            else {this.update_idle()}
+        }, 150);
+    }
+
+    attack(attacktime, cooldowntime, dmg, atk){
+        this.action = "Attacking"
         this.game.collision(this.hitbox, this, dmg);
         this.cooldown(cooldowntime)
+
+        if (atk === 1) {this.update_atk1()}
+        else if (atk === 2) {this.update_atk2()}
+        else if (atk === 3) {this.update_atk3()}
+
         setTimeout(() => {
-            this.attacking = false
+            this.action = ""
+            if (this.state === "Run") {this.update_run()}
+            else {this.update_idle()}
         }, attacktime);
+    }
+
+    blockHit(){
+        this.cooldown(300)
+        this.update_blockAtk()
+
+        setTimeout(() => {
+            if (this.state === "Run") {this.update_run()}
+            else {this.update_idle()}
+        }, 300);
+    }
+
+    update_blockAtk(){
+        this.state = "Block";
+        this.numFrames = 5;
+        this.num = 0;
+        this.frameCounter = 0;
+        this.stagger = 5;
     }
 
     cooldown(timer) {
@@ -54,34 +102,114 @@ export default class Player {
         }, timer);
     }
 
-    update_idle() {
+    update_anims() {
         this.frameCounter++;
     
-        if (this.frameCounter % 5 === 0) {
+        if (this.frameCounter % (this.stagger) === 0) {
             this.num++;
-            if (this.num > 9) {this.num = 0}
-            this.img.src = `assets/knight/Run/Heroknight_Run_${this.num}.png`
+            if (this.num > (this.numFrames - 1)) {this.num = 0}
+            this.img.src = `assets/knight/${this.state}/Heroknight_${this.state}_${this.num}.png`
+            // console.log(`${this.num} and ${this.state}`);
+        }
+    }
+
+    update_idle() {
+        this.state = "Idle";
+        this.numFrames = 8;
+        this.num = 0;
+        this.frameCounter = 0;
+        this.stagger = 8;
+    }
+
+    update_run() {
+        if (this.state !== "Run") {
+            this.state = "Run";
+            this.numFrames = 10;
+            this.num = 0;
+            this.frameCounter = 0;
+            this.stagger = 4;
+        }
+    }
+
+    update_atk1() {
+        if (this.state !== "Attack2") {
+            this.state = "Attack2";
+            this.numFrames = 6;
+            this.num = 0;
+            this.frameCounter = 0;
+            this.stagger = 6;
+        }
+    }
+
+    update_block() {
+        if (this.state !== "BlockIdle") {
+            this.state = "BlockIdle";
+            this.numFrames = 8;
+            this.num = 0;
+            this.frameCounter = 0;
+            this.stagger = 8;
+        }
+    }
+
+    update_atk2() {
+        if (this.state !== "Attack1") {
+            this.state = "Attack1";
+            this.numFrames = 6;
+            this.num = 0;
+            this.frameCounter = 0;
+            this.stagger = 6;
+        }
+    }
+
+    update_atk3() {
+        if (this.state !== "Attack3") {
+            this.state = "Attack3";
+            this.numFrames = 8;
+            this.num = 0;
+            this.frameCounter = 0;
+            this.stagger = 8;
+        }
+    }
+
+    update_hurt() {
+        if (this.state !== "Hurt") {
+            this.state = "Hurt";
+            this.numFrames = 3;
+            this.num = 0;
+            this.frameCounter = 0;
+            this.stagger = 3;
         }
     }
 
     draw() {
         // this.ctx.fillStyle = "white";
         // this.ctx.fillRect(this.position.x,this.position.y,100,250);
-        this.update_idle();
-        this.ctx.drawImage(this.img, this.position.x - 100, this.position.y, 300, 300)
+        if (this.direction === 0) {
+            this.ctx.scale(1,1);
+            this.ctx.drawImage(this.img, this.position.x - 100, this.position.y, 300, 300);
+        } else {
+            this.ctx.scale(-1,1);
+            this.ctx.drawImage(this.img, -this.position.x - 200, this.position.y, 300, 300); //right
+        }
     }
 
     update() {
         this.draw();
         this.velocity = 0;
-        if (this.attacking) {
-            this.ctx.fillStyle = "red";
-            this.ctx.fillRect(this.hitbox.position.x + this.direction, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
-        } else {    
+        this.update_anims();
+        if (this.action === "Attacking") {
+            // this.ctx.fillStyle = "red";
+            // this.ctx.fillRect(this.hitbox.position.x + this.direction, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
+        } else if (this.action === "Blocking" && this.state !== "Block") {
+            this.update_block();
+        }
+        else {    
             if (this.keysPressed.right && this.lastKey === this.rightkey) {
-                if (this.position.x + 10 < this.canvas.width - 90) {this.position.x += 10}
+                this.update_run(); 
+                if (this.position.x + 5 < this.canvas.width - 90) {this.position.x += 5}
             } else if (this.keysPressed.left && this.lastKey === this.leftkey) {
-                if (this.position.x - 10 >= 0) {this.position.x -= 10}
+                this.update_run(); 
+                if (this.position.x - 5 >= 0) {this.position.x -= 5}
             }
         }
     }
@@ -91,14 +219,32 @@ export default class Player {
             switch (e.key) {
                 case this.rightkey:
                     this.keysPressed.right = true;
-                    this.lastKey = this.rightkey;    
+                    this.lastKey = this.rightkey;   
                     break;
                 case this.leftkey:    
                     this.keysPressed.left = true;
                     this.lastKey = this.leftkey;
                     break;
                 case this.attack1:
-                    if (!this.onCooldown) {this.attack(250,300, this.atk1DMG)}
+                    if (!this.onCooldown) {
+                        this.hitbox.width = 180;
+                        this.attack(600,630, this.atk1DMG, 1);
+                    }
+                    break;
+                case this.attack2:
+                    if (!this.onCooldown) {
+                        this.hitbox.width = 180;
+                        this.attack(600,680, this.atk2DMG, 2);
+                    }
+                    break;
+                case this.attack3:
+                    if (!this.onCooldown) {
+                        this.hitbox.width = 180;
+                        this.attack(800,850, this.atk2DMG, 3);
+                    }
+                    break;
+                case this.block:
+                    this.action = "Blocking";
                     break;
             }
         })
@@ -106,9 +252,15 @@ export default class Player {
             switch (e.key) {
                 case this.rightkey:
                     this.keysPressed.right = false;
+                    this.update_idle();
                     break;
                 case this.leftkey:
                     this.keysPressed.left = false;
+                    this.update_idle();
+                    break;
+                case this.block:
+                    this.action = ""
+                    this.state = "Idle"
                     break;
             }
         })
