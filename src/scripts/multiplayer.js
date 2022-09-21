@@ -5,7 +5,7 @@ import Winner from './winner.js'
 
 export default class Multiplayer {
     constructor(ctx) {
-        new Platform(ctx);
+        this.Platform = new Platform(ctx);
         this.ctx = ctx;
         this.canvasDiv = document.getElementById('canvas-div');
         this.Player1 = new Player(ctx,this, {x: 0, y: 240}, {id: "Player1", velocity: 0, direction: 0, leftkey: "a", rightkey: "d", block: "s", attack1: "e", atk1DMG: 25, attack2: "r", atk2DMG: 30, attack3: "t", atk3DMG: 40})
@@ -70,7 +70,7 @@ export default class Multiplayer {
                         this.damage(this.Player2, Math.floor(dmg/2))   
                     } else {
                         this.Player2.hurt();
-                        this.damage(this.Player2, Math.floor(dmg/2))   
+                        this.damage(this.Player2, dmg)   
                     }
                 }
 
@@ -83,7 +83,7 @@ export default class Multiplayer {
                         this.damage(this.Player1, Math.floor(dmg/2))   
                     } else {
                         this.Player1.hurt();
-                        this.damage(this.Player1, Math.floor(dmg))   
+                        this.damage(this.Player1, dmg)   
                     }
                 }
 
@@ -99,7 +99,7 @@ export default class Multiplayer {
                         this.damage(this.Player2, Math.floor(dmg/2))   
                     } else {
                         this.Player2.hurt();
-                        this.damage(this.Player2, Math.floor(dmg/2))   
+                        this.damage(this.Player2, dmg)   
                     }
                 }
                 
@@ -112,7 +112,7 @@ export default class Multiplayer {
                         this.damage(this.Player1, Math.floor(dmg/2))   
                     } else {
                         this.Player1.hurt();
-                        this.damage(this.Player1, Math.floor(dmg))   
+                        this.damage(this.Player1, dmg)   
                     }
                 }
 
@@ -155,50 +155,54 @@ export default class Multiplayer {
     }
 
     endGame() {
-        this.gameEnded = true;
+        if (!this.gameEnded){
+            this.gameEnded = true;
 
-        let P1Health = parseInt(document.getElementById("P1Health").dataset.Health);
-        let P2Health = parseInt(document.getElementById("P2Health").dataset.Health);
+            let P1Health = parseInt(document.getElementById("P1Health").dataset.Health);
+            let P2Health = parseInt(document.getElementById("P2Health").dataset.Health);
 
-        if (P1Health > P2Health) {this.Winner = "PLAYER 1 WON"}
-        else if (P2Health > P1Health) {this.Winner = "PLAYER 2 WON"}
-        else {this.Winner = "DRAW!!!"}
-        
+            if (P1Health > P2Health) {this.Winner = "PLAYER 1 WON"}
+            else if (P2Health > P1Health) {this.Winner = "PLAYER 2 WON"}
+            else {this.Winner = "DRAW!!!"}
+            
 
-        delete this.Player1;
-        delete this.Player2;
-        new Winner(this.Winner);
-        document.getElementById("P1HealthMax").remove();
-        document.getElementById("P2HealthMax").remove();
-        document.getElementById("P1Health").remove();
-        document.getElementById("P2Health").remove();
-        document.getElementById("Timer").remove();
-        delete this;
+            delete this.Player1;
+            delete this.Player2;
+            delete this.Platform;
+            document.getElementById("P1HealthMax").remove();
+            document.getElementById("P2HealthMax").remove();
+            document.getElementById("P1Health").remove();
+            document.getElementById("P2Health").remove();
+            document.getElementById("Timer").remove();
+            delete this;
+            new Winner(this.Winner);
+        }
     }
 
     animate(timestamp) {
 
+        if (!this.gameEnded) {
+            this.updateHealth()
 
-        this.updateHealth()
+            this.ctx.clearRect(0,0,960, 540);
+            this.Platform.update();
 
-        this.ctx.clearRect(0,0,960, 540);
-        new Platform(this.ctx);
+            if (this.Player1.position.x > this.Player2.position.x) {
+                this.Player1.direction = -100;
+            } else {
+                this.Player1.direction = 0;
+            }
 
-        if (this.Player1.position.x > this.Player2.position.x) {
-            this.Player1.direction = -100;
-        } else {
-            this.Player1.direction = 0;
+            if (this.Player2.position.x > this.Player1.position.x) {
+                this.Player2.direction = -100;
+            } else {
+                this.Player2.direction = 0;
+            }
+            
+            this.Player1.update();
+            this.Player2.update(); 
+            requestAnimationFrame(this.animate);
         }
-
-        if (this.Player2.position.x > this.Player1.position.x) {
-            this.Player2.direction = -100;
-        } else {
-            this.Player2.direction = 0;
-        }
-        
-        this.Player1.update();
-        this.Player2.update(); 
-        requestAnimationFrame(this.animate);
 
     }
 

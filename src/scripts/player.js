@@ -132,8 +132,8 @@ export default class Player {
     }
 
     update_atk1() {
-        if (this.state !== "Attack2") {
-            this.state = "Attack2";
+        if (this.state !== "Attack1") {
+            this.state = "Attack1";
             this.numFrames = 6;
             this.num = 0;
             this.frameCounter = 0;
@@ -152,8 +152,8 @@ export default class Player {
     }
 
     update_atk2() {
-        if (this.state !== "Attack1") {
-            this.state = "Attack1";
+        if (this.state !== "Attack2") {
+            this.state = "Attack2";
             this.numFrames = 6;
             this.num = 0;
             this.frameCounter = 0;
@@ -218,12 +218,16 @@ export default class Player {
         document.addEventListener('keydown', (e) => {
             switch (e.key) {
                 case this.rightkey:
-                    this.keysPressed.right = true;
-                    this.lastKey = this.rightkey;   
+                    if (this.action === "") {
+                        this.keysPressed.right = true;
+                        this.lastKey = this.rightkey;   
+                    }
                     break;
-                case this.leftkey:    
-                    this.keysPressed.left = true;
-                    this.lastKey = this.leftkey;
+                case this.leftkey:   
+                    if (this.action === "") { 
+                        this.keysPressed.left = true;
+                        this.lastKey = this.leftkey;
+                    }
                     break;
                 case this.attack1:
                     if (!this.onCooldown) {
@@ -240,7 +244,7 @@ export default class Player {
                 case this.attack3:
                     if (!this.onCooldown) {
                         this.hitbox.width = 180;
-                        this.attack(800,850, this.atk2DMG, 3);
+                        this.attack(800,850, this.atk3DMG, 3);
                     }
                     break;
                 case this.block:

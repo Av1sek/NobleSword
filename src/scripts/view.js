@@ -8,7 +8,6 @@ export default class View {
         this.canvasDiv = document.getElementById('canvas-div');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        ctx.beginPath();
         ctx.fillStyle = "black";
         ctx.fillRect(0,0,canvas.width,canvas.height);
 
