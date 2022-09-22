@@ -1,24 +1,65 @@
-#SP, #MP, #Help, #Credits{
-    background-color: red;
-    color: white;
+#Play, #Settings, #About, #More{
+    height: 80px;
+    width: 200px;
     position: absolute;
-    bottom: 100px;
-    font-size: 40px;
-    width: 250px;
-    text-align: center;
-    border-radius: 15px;
     align-self: flex-start;
-    margin-left: 100px;
+    vertical-align: bottom;
+    padding: 0px 0px 0px 0px;
+    margin-left: 60px;
+    margin-top: 10px;
+    bottom: 50px;
+    z-index: 10;
+}
+#Settings:hover {
+    padding-left: 50px;
+    transition: all 100ms;
 }
 
-#MP {
-    bottom: 280px;
+#Play {
+    bottom: 320px;
+}
+#Play:hover {
+    padding-left: 50px;
+    transition: all 100ms;
 }
 
-#Help {
-    bottom: 220px;
+#About {
+    bottom: 230px;
 }
 
-#Credits {
-    bottom: 160px;
+#About:hover {
+    padding-left: 50px;
+    transition: all 100ms;
+}
+
+#More {
+    bottom: 140px;
+}
+
+#More:hover {
+    padding-left: 50px;
+    transition: all 100ms;
+}
+
+#ViewLogo{
+    height: 150px;
+    width: 390px;
+    position: absolute;
+    align-self: flex-start;
+    vertical-align: bottom;
+    padding: 30px 0px 0px 500px;
+    animation: moveLR 100ms infinite
+}
+
+@keyframes moveLR {
+    0% {
+        padding: 30px 0px 0px 500px;
+    }
+    45% {
+        padding: 35px 0px 0px 505px;
+    }
+    55% {
+        padding: 35px 0px 0px 495px;
+    }
+    100% {padding: 30px 0px 0px 500px;}
 }

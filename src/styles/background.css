@@ -12,13 +12,15 @@ body {
     align-items: center;
     flex-direction: column;
     overflow: hidden;
-
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(34, 33, 33) 35%, rgb(0, 0, 0) 100%);
 
     width: 960px;
     height: 540px;
     align-self: center;
     position: absolute;
+    
 }
+
 
 #external-links {
     display: inline-flex;
@@ -63,4 +65,5 @@ body {
     width: 1020px;
     height: 580px;
     top: 120px;
+    z-index: 2;
 }

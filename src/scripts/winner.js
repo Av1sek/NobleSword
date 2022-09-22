@@ -10,6 +10,8 @@ export default class Winner{
         WinnerText.setAttribute("id", "WinnerText");
         this.canvasDiv.appendChild(WinnerText);
         WinnerText.innerHTML = winner;
+        ctx.clearRect(0,0,960,540);
+        ctx.fillRect(0,0,960,540);
 
         setTimeout(() => {
             WinnerText.remove();

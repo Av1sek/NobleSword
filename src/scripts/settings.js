@@ -1,6 +1,6 @@
 import View from './view'
 
-export default class Help {
+export default class Settings {
     constructor() {
         let canvas = document.getElementById("game-window");
         this.canvasDiv = document.getElementById('canvas-div')
@@ -10,31 +10,29 @@ export default class Help {
         ctx.fillStyle = "black";
         ctx.fillRect(0,0,canvas.width,canvas.height);
 
-        this.createButton({id: "Back", html: "Back"})
+        this.createButton({id: "Back", url: "assets/view/backLogo.png"});
 
         let body = document.createElement('Text');
         body.setAttribute("id", "HelpBody");
         this.canvasDiv.appendChild(body);
         body.innerHTML = "NO HELP YET"
-
     }
 
     createButton(values) {
-        let txt = document.createElement("Text");
-        txt.setAttribute("id", values.id);
-        this.canvasDiv.appendChild(txt);
-        txt.innerHTML = values.html;
+        let img = new Image();
+        img.src = values.url;
+        img.setAttribute("id", values.id);
+        this.canvasDiv.appendChild(img);
     }
+
 }
 
 document.addEventListener("click", (el) => {
-    let txt = el.target;
+    let btn = el.target;
     let canvas = document.getElementById('game-window');
     let ctx = canvas.getContext('2d');
 
-    if (txt.tagName === "TEXT") {
-        if (txt.id === "Back") {loadView(canvas, ctx)} 
-    }
+    if (btn.id === "Back") {loadView(canvas, ctx)} 
 })
 
 function loadView(canvas, ctx) {

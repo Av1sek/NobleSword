@@ -1,6 +1,7 @@
 import Multiplayer from './multiplayer.js'
-import Help from './help.js'
-import Credits from './credits.js';
+import More from './more.js'
+import Settings from './settings.js'
+import About from './about.js';
 
 export default class View {
     constructor(canvas, ctx) {
@@ -11,59 +12,57 @@ export default class View {
         ctx.fillStyle = "black";
         ctx.fillRect(0,0,canvas.width,canvas.height);
 
-        this.createButton({id: "SP", html: "Singleplayer"});
-        this.createButton({id: "MP", html: "Multiplayer"})
-        this.createButton({id: "Help", html: "Help"});
-        this.createButton({id: "Credits", html: "Credits"});
+        this.createButton({id: "ViewLogo", url: "assets/view/viewTitleLogo.png"});
+        this.createButton({id: "Play", url: "assets/view/playLogo.png"});
+        this.createButton({id: "Settings", url: "assets/view/settingsLogo.png"})
+        this.createButton({id: "About", url: "assets/view/aboutLogo.png"});
+        this.createButton({id: "More", url: "assets/view/moreLogo.png"});
 
-        // this.img = new Image();
-        // this.img.src = "assets/menuSwordsman.png";
         // this.ctx.drawImage(this.img, 10, 10);
         // console.log(this.img)
     }
 
     createButton(values) {
-        let txt = document.createElement("Text");
-        txt.setAttribute("id", values.id);
-        this.canvasDiv.appendChild(txt);
-        txt.innerHTML = values.html;
+        let img = new Image();
+        img.src = values.url;
+        img.setAttribute("id", values.id);
+        this.canvasDiv.appendChild(img);
     }
 }
 
 document.addEventListener("click", (el) => {
-    let txt = el.target;
+    let btn = el.target;
     let ctx = document.getElementById("game-window").getContext('2d')
-    if (txt.tagName === "TEXT") {
-        if (txt.id === "SP") {loadSinglePlayer(ctx)} 
-        else if (txt.id === "MP") {loadMultiPlayer(ctx)}
-        else if (txt.id === "Help") {loadHelp(ctx)}
-        else if (txt.id === "Credits") {loadCredits(ctx)}
-    }
+    if (btn.id === "Play") {loadPlay(ctx)} 
+    else if (btn.id === "About") {loadAbout(ctx)}
+    else if (btn.id === "More") {loadMore(ctx)}
+    else if (btn.id === "Settings") {loadSettings(ctx)}
 })
 
-function loadSinglePlayer(ctx) {
+function loadPlay(ctx) {
     deleteButtons();
     new Multiplayer(ctx);
 }
 
-function loadMultiPlayer(ctx) {
+function loadAbout(ctx) {
     deleteButtons();
-    new Multiplayer(ctx);
+    new About(ctx);
 }
 
-function loadHelp(ctx) {
+function loadMore(ctx) {
     deleteButtons();
-    new Help();
+    new More(ctx);
 }
 
-function loadCredits(ctx) {
+function loadSettings(ctx) {
     deleteButtons();
-    new Credits()
+    new Settings(ctx)
 }
 
 function deleteButtons(){
-    document.getElementById("MP").remove();
-    document.getElementById("SP").remove();
-    document.getElementById("Help").remove();
-    document.getElementById("Credits").remove();
+    document.getElementById("Play").remove();
+    document.getElementById("About").remove();
+    document.getElementById("More").remove();
+    document.getElementById("Settings").remove();
+    document.getElementById("ViewLogo").remove();
 }

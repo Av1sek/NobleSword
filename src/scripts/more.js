@@ -1,4 +1,4 @@
-export default class Credits {
+export default class More {
     constructor() {
         let canvas = document.getElementById("game-window");
         this.canvasDiv = document.getElementById('canvas-div');
@@ -8,19 +8,19 @@ export default class Credits {
         ctx.fillStyle = "black";
         ctx.fillRect(0,0,canvas.width,canvas.height);
 
-        this.createButton({id: "Back", html: "Back"})
+        this.createButton({id: "Back", url: "assets/view/backLogo.png"});
 
         let body = document.createElement('Text');
         body.setAttribute("id", "CreditsBody");
         this.canvasDiv.appendChild(body);
-        body.innerHTML = "Avisek AND THE WORLD"
+        body.innerHTML = "More what?"
 
     }
 
     createButton(values) {
-        let txt = document.createElement("Text");
-        txt.setAttribute("id", values.id);
-        this.canvasDiv.appendChild(txt);
-        txt.innerHTML = values.html;
+        let img = new Image();
+        img.src = values.url;
+        img.setAttribute("id", values.id);
+        this.canvasDiv.appendChild(img);
     }
 }

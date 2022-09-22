@@ -8,6 +8,7 @@ export default class Multiplayer {
         this.Platform = new Platform(ctx);
         this.ctx = ctx;
         this.canvasDiv = document.getElementById('canvas-div');
+        this.canvasDiv.style.background = "none"
         this.Player1 = new Player(ctx,this, {x: 0, y: 240}, {id: "Player1", velocity: 0, direction: 0, leftkey: "a", rightkey: "d", block: "s", attack1: "e", atk1DMG: 25, attack2: "r", atk2DMG: 30, attack3: "t", atk3DMG: 40})
         this.Player2 = new Player(ctx,this, {x: 860, y: 240}, {id: "Player2", velocity: 0, direction: -100, leftkey: "ArrowLeft", rightkey: "ArrowRight", block: "ArrowDown", attack1: "b", atk1DMG: 25, attack2: "n", atk2DMG: 30, attack3: "m", atk3DMG: 40})
         this.gameEnded = false;
