@@ -3,7 +3,6 @@ export default class Platform {
     constructor(ctx) {
         this.ctx = ctx;
         this.img = new Image();
-        // this.img.src = "../../assets/backgrounds/NightBG/NightBG1.png";
         this.bgName = "NightBG"
         this.num = 1;
         this.frameCounter = 0;
@@ -20,10 +19,6 @@ export default class Platform {
             this.num++;
             if (this.num > (this.numFrames - 1)) {this.num = 1}
             this.img.src = `assets/backgrounds/${this.bgName}/${this.bgName}${this.num}.png`
-            // console.log(this.img.src)
-            // this.img.src = "assets/backgrounds/NightBG/NightBG1.png"
-            // console.log("-----------")
-            // console.log(this.img.src)
         }
     }
 

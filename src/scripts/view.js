@@ -18,8 +18,6 @@ export default class View {
         this.createButton({id: "About", url: "assets/view/aboutLogo.png"});
         this.createButton({id: "More", url: "assets/view/moreLogo.png"});
 
-        // this.ctx.drawImage(this.img, 10, 10);
-        // console.log(this.img)
     }
 
     createButton(values) {

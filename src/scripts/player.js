@@ -106,7 +106,6 @@ export default class Player {
             this.num++;
             if (this.num > (this.numFrames - 1)) {this.num = 0}
             this.img.src = `assets/knight/${this.state}/HeroKnight_${this.state}_${this.num}.png`
-            // console.log(`${this.num} and ${this.state}`);
         }
     }
 
@@ -179,8 +178,6 @@ export default class Player {
     }
 
     draw() {
-        // this.ctx.fillStyle = "white";
-        // this.ctx.fillRect(this.position.x,this.position.y,100,250);
         if (this.direction === 0) {
             this.ctx.scale(1,1);
             this.ctx.drawImage(this.img, this.position.x - 100, this.position.y, 300, 300);
@@ -195,8 +192,6 @@ export default class Player {
         this.velocity = 0;
         this.update_anims();
         if (this.action === "Attacking") {
-            // this.ctx.fillStyle = "red";
-            // this.ctx.fillRect(this.hitbox.position.x + this.direction, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
         } else if (this.action === "Blocking" && this.state !== "Block") {
             this.update_block();
         }
