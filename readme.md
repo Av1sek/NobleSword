@@ -45,3 +45,10 @@ In NobleSword players are able to
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/69817712/191838478-70b7b630-e7b7-4c5f-b3c7-2b74622d2544.png">
 
 This Menu Screen is interactable. 
+
+# Credits
+
+https://sventhole.itch.io/hero-knight
+https://flamingtext.com
+https://imgur.com/a/GPlx4 
+Google Images
