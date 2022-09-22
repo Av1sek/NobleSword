@@ -49,6 +49,9 @@ This Menu Screen is interactable.
 # Credits
 
 https://sventhole.itch.io/hero-knight
+
 https://flamingtext.com
+
 https://imgur.com/a/GPlx4 
+
 Google Images
