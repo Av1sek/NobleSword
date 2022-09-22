@@ -26,7 +26,7 @@ export default class Player {
         this.atk3DMG = values.atk3DMG;
 
         this.img = new Image();
-        this.img.src = "assets/knight/idle/Heroknight_Idle_0.png";
+        this.img.src = "../../assets/knight/idle/Heroknight_Idle_0.png";
         this.num = 0;
         this.frameCounter = 0;
         this.state = "Idle";
@@ -49,16 +49,15 @@ export default class Player {
         this.handleClick();
     }
 
-    hurt(){
-        this.hit = true; 
-        this.cooldown(150);
+    hurt(cooldown){
+        this.cooldown(600);
         this.update_hurt();
 
         setTimeout(() => {
             this.hit = false
             if (this.state === "Run") {this.update_run()}
             else {this.update_idle()}
-        }, 150);
+        }, 200);
     }
 
     attack(attacktime, cooldowntime, dmg, atk){
@@ -108,7 +107,7 @@ export default class Player {
         if (this.frameCounter % (this.stagger) === 0) {
             this.num++;
             if (this.num > (this.numFrames - 1)) {this.num = 0}
-            this.img.src = `assets/knight/${this.state}/Heroknight_${this.state}_${this.num}.png`
+            this.img.src = `../../assets/knight/${this.state}/Heroknight_${this.state}_${this.num}.png`
             // console.log(`${this.num} and ${this.state}`);
         }
     }
