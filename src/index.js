@@ -7,5 +7,4 @@ document.addEventListener('DOMContentLoaded', () => {
     gameCanvas.height = 540;
 
     new View(gameCanvas, ctx)
-
 })
