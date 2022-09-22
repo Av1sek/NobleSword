@@ -2,11 +2,12 @@
     background-color: rgb(0, 0, 0);
     width: 400px;
     height: 40px;
-    top: 40px;
+    top: 35px;
     margin-left: 30px;
     border: 6px 6px 6px 6px;
     border-style: solid;
     border-color: white;
+    border-radius: 10px;
     position: absolute;
     align-self: flex-start;
 }
@@ -15,9 +16,10 @@
     background-color: rgb(0, 0, 0);
     width: 400px;
     height: 40px;
-    top: 40px;
+    top: 35px;
     margin-right: 30px;
     border: 6px 6px 6px 6px;
+    border-radius: 10px;
     border-style: solid;
     border-color: white;
     position: absolute;
@@ -28,8 +30,9 @@
     background-color: rgb(50, 121, 134);
     width: 400px;
     height: 40px;
-    top: 42px;
+    top: 36px;
     margin-left: 32px;
+    border-radius: 10px;
     position: absolute;
     align-self: flex-start;
     z-index: 2;
@@ -39,21 +42,23 @@
     background-color: rgb(208, 202, 88);
     width: 400px;
     height: 40px;
-    top: 42px;
+    top: 36px;
     margin-right: 32px;
     position: absolute;
+    border-radius: 10px;
     align-self: flex-end;
     z-index: 2;
 }
 
 #Timer {
-    background-color: rgb(145, 55, 55);
+    background-color: rgb(0, 0, 0);
     height: 70px;
     width: 95px;
     display: inline-block;
     align-self: center;
     border: 6px 6px 6px 6px;
     border-style: solid;
+    border-radius: 10px;
     border-color: white;
     top: 20px;
     
