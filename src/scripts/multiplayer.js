@@ -19,7 +19,7 @@ export default class Multiplayer {
         this.createTimer();
         this.updateTimer();
         this.animate = this.animate.bind(this);
-        requestAnimationFrame(this.animate);
+        this.animateId = setInterval(this.animate, 1000/60);
     }
 
     createHealthBars() {
@@ -175,13 +175,13 @@ export default class Multiplayer {
             document.getElementById("P1Health").remove();
             document.getElementById("P2Health").remove();
             document.getElementById("Timer").remove();
+            clearInterval(this.animateId);
             delete this;
             new Winner(this.Winner);
         }
     }
 
-    animate(timestamp) {
-
+    animate() {
         if (!this.gameEnded) {
             this.updateHealth()
 
@@ -202,7 +202,6 @@ export default class Multiplayer {
             
             this.Player1.update();
             this.Player2.update(); 
-            requestAnimationFrame(this.animate);
         }
 
     }
