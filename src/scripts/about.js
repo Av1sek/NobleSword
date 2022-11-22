@@ -11,11 +11,19 @@ export default class About {
 
         this.createButton({id: "Back", url: "assets/view/backLogo.png"});
 
-        let body = document.createElement('Text');
-        body.setAttribute("id", "CreditsBody");
-        this.canvasDiv.appendChild(body);
-        body.innerHTML = "About who?"
+        let aboutDiv = document.createElement('Div');
+        aboutDiv.setAttribute("id", "About-Div");
+        this.canvasDiv.appendChild(aboutDiv);
 
+        let aboutTitle = document.createElement('Div');
+        aboutTitle.setAttribute("id", "About-Title");
+        aboutDiv.appendChild(aboutTitle);
+        aboutTitle.innerHTML = "About"
+
+        let aboutBody = document.createElement('Div');
+        aboutBody.setAttribute("id", "About-Body");
+        aboutDiv.appendChild(aboutBody);
+        aboutBody.innerHTML = "NobleSword is a 2D two-player fighting game created using native Javascript, in 1 week. This game was inspired by retro fighting games like Street Fighter 2. The players are able to move in both directions and are able to attack and block attacks. If a player's health runs out the other player wins. If the timer runs out, the player with more health wins, and if both players have the same amount of health then it is considered a draw."
     }
 
     createButton(values) {

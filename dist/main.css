@@ -73,7 +73,7 @@ body {
 /*!***************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/view.css ***!
   \***************************************************************************************************/
-#Play, #Settings, #About, #More{
+#Play, #Settings, #About{
     height: 80px;
     width: 200px;
     position: absolute;
@@ -81,17 +81,21 @@ body {
     vertical-align: bottom;
     padding: 0px 0px 0px 0px;
     margin-left: 60px;
-    margin-top: 10px;
     bottom: 50px;
     z-index: 10;
 }
+
+#Settings {
+    bottom: 90px;
+}
+
 #Settings:hover {
     padding-left: 50px;
     transition: all 100ms;
 }
 
 #Play {
-    bottom: 320px;
+    bottom: 270px;
 }
 #Play:hover {
     padding-left: 50px;
@@ -99,19 +103,10 @@ body {
 }
 
 #About {
-    bottom: 230px;
+    bottom: 180px;
 }
 
 #About:hover {
-    padding-left: 50px;
-    transition: all 100ms;
-}
-
-#More {
-    bottom: 140px;
-}
-
-#More:hover {
     padding-left: 50px;
     transition: all 100ms;
 }
@@ -179,6 +174,84 @@ body {
     margin-top: 250px;
 }
 
+#About-Div {
+    margin-top: 100px;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#About-Title {
+    width: 400px;
+    height: 40px;
+    font-size: 40px;
+    margin-top: 20px;
+    text-align: center;
+    font-family: cursive;
+    font-weight: bolder;
+    color: white;
+}
+
+#About-Body {
+    width: 350px;
+    height: 250px;
+    margin-top: 30px;
+    color: white;
+    font-family: fantasy;
+    font-weight: bold;
+}
+
+#Settings-Div {
+    margin-top: 100px;
+    width: 600px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#Settings-Title {
+    width: 400px;
+    height: 40px;
+    font-size: 40px;
+    margin-top: 20px;
+    text-align: center;
+    font-family: cursive;
+    font-weight: bolder;
+    color: silver;
+}
+
+#controls-container {
+    width: 700px;
+    height: 200px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#p1-container {
+    margin-top: 50px;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+#settings-p1-text {
+    margin-bottom: 10px;
+    font-family: cursive;
+    font-weight: bold;
+    font-size: 20px;
+    color: gold;
+}
 
 /*!********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/healthbar.css ***!
