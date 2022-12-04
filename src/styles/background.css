@@ -4,6 +4,7 @@ body {
     align-items: center;
     flex-direction: column;
     padding-top: 130px;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar{

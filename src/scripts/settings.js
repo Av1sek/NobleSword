@@ -66,7 +66,7 @@ export default class Settings {
         let player2Block = document.createElement('Div');
         player2Block.setAttribute("id", "settings-p1-block");
         p2Container.appendChild(player2Block);
-        player2Block.innerHTML = "Block: downArr (hold)";
+        player2Block.innerHTML = "Block: J (hold)";
 
         let player2Attack = document.createElement('Div');
         player2Attack.setAttribute("id", "settings-p1-attack");
